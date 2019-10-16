@@ -5,9 +5,10 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="java mysql">
-    <meta name="description" content="科室过滤问题（例子）利用optional类不用管变量或者对象是否是null123public boolean isPresent() &amp;#123;       return value != null;   &amp;#125;
+    <meta name="description" content="
+Optional利用optional类不用管变量或者对象是否是null123public boolean isPresent() &amp;#123;       return value != null;   &amp;#125;
 
-isPresen">
+isPresent">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -451,7 +452,8 @@ isPresen">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="科室过滤问题（例子）"><a href="#科室过滤问题（例子）" class="headerlink" title="科室过滤问题（例子）"></a>科室过滤问题（例子）</h1><h4 id="利用optional类不用管变量或者对象是否是null"><a href="#利用optional类不用管变量或者对象是否是null" class="headerlink" title="利用optional类不用管变量或者对象是否是null"></a>利用optional类不用管变量或者对象是否是null</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public boolean isPresent() &#123;</span><br><span class="line">       return value != null;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+                <hr>
+<h2 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h2><h4 id="利用optional类不用管变量或者对象是否是null"><a href="#利用optional类不用管变量或者对象是否是null" class="headerlink" title="利用optional类不用管变量或者对象是否是null"></a>利用optional类不用管变量或者对象是否是null</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public boolean isPresent() &#123;</span><br><span class="line">       return value != null;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="isPresent-函数只是判断null，没有判断value-length-0"><a href="#isPresent-函数只是判断null，没有判断value-length-0" class="headerlink" title="isPresent()函数只是判断null，没有判断value.length==0"></a>isPresent()函数只是判断null，没有判断value.length==0</h4><h4 id="下面是利用Optional与if-else判断null的例子"><a href="#下面是利用Optional与if-else判断null的例子" class="headerlink" title="下面是利用Optional与if-else判断null的例子"></a>下面是利用Optional与if-else判断null的例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public boolean filter(String defect,StructuredMedicalRecord record)&#123;</span><br><span class="line">    if(!this.inited)&#123;</span><br><span class="line">        throw new RuntimeException(&quot;初始化未成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    #1、第一种方法就是利用if-else判断</span><br><span class="line">    if(null == record.getTreatmentInfo())&#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    String deptName = record.getTreatmentInfo().getDepartment();</span><br><span class="line">    if (StringUtils.isEmpty(deptName))&#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    #2、利用Optional判断null</span><br><span class="line">    if (Optional.ofNullable(record).map(u -&gt; u.getTreatmentInfo()).map(r -&gt; r.getDepartment()).isPresent()==false)&#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    ...........</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -678,9 +680,10 @@ isPresen">
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            科室过滤问题（例子）利用optional类不用管变量或者对象是否是null123public boolean isPresent() &#123;       return value != null;   &#125;
+                            
+Optional利用optional类不用管变量或者对象是否是null123public boolean isPresent() &#123;       return value != null;   &#125;
 
-isPresen
+isPresent
                         
                     </div>
                     <div class="publish-info">
