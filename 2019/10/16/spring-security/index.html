@@ -4,11 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Optional, java mysql">
-    <meta name="description" content="利用optional类不用管变量或者对象是否是null public boolean isPresent() {
-        return value != null;
-    }
-isPresent()函数只是判断null，没有判断v">
+    <meta name="keywords" content="spring_security, java mysql">
+    <meta name="description" content="maven项目管理的依赖&amp;lt;dependencies&gt;
+  ...
+    &amp;lt;dependency&gt;
+      &amp;lt;groupId&gt;org.springframework.boot&amp;lt;/groupId&gt;
+      &amp;l">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +17,7 @@ isPresent()函数只是判断null，没有判断v">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Optional | sheyu</title>
+    <title>spring_security | sheyu</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -307,13 +308,13 @@ isPresent()函数只是判断null，没有判断v">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Optional
+                        spring_security
                     </div>
                 </div>
             </div>
@@ -452,72 +453,23 @@ isPresent()函数只是判断null，没有判断v">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="利用optional类不用管变量或者对象是否是null"><a href="#利用optional类不用管变量或者对象是否是null" class="headerlink" title="利用optional类不用管变量或者对象是否是null"></a>利用optional类不用管变量或者对象是否是null</h4><pre class=" language-java"><code class="language-java"> <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> value <span class="token operator">!=</span> null<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span></code></pre>
-<h4 id="isPresent-函数只是判断null，没有判断value-length-0"><a href="#isPresent-函数只是判断null，没有判断value-length-0" class="headerlink" title="isPresent()函数只是判断null，没有判断value.length==0"></a>isPresent()函数只是判断null，没有判断value.length==0</h4><h4 id="下面是利用Optional与if-else判断null的例子"><a href="#下面是利用Optional与if-else判断null的例子" class="headerlink" title="下面是利用Optional与if-else判断null的例子"></a>下面是利用Optional与if-else判断null的例子</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">filter</span><span class="token punctuation">(</span>String defect<span class="token punctuation">,</span>StructuredMedicalRecord record<span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>inited<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">"初始化未成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    #<span class="token number">1</span>、第一种方法就是利用<span class="token keyword">if</span><span class="token operator">-</span><span class="token keyword">else</span>判断
-    <span class="token keyword">if</span><span class="token punctuation">(</span>null <span class="token operator">==</span> record<span class="token punctuation">.</span><span class="token function">getTreatmentInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    String deptName <span class="token operator">=</span> record<span class="token punctuation">.</span><span class="token function">getTreatmentInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDepartment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>StringUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>deptName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    #<span class="token number">2</span>、利用Optional判断null
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>Optional<span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span>record<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>u <span class="token operator">-</span><span class="token operator">></span> u<span class="token punctuation">.</span><span class="token function">getTreatmentInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>r <span class="token operator">-</span><span class="token operator">></span> r<span class="token punctuation">.</span><span class="token function">getDepartment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+                <h3 id="maven项目管理的依赖"><a href="#maven项目管理的依赖" class="headerlink" title="maven项目管理的依赖"></a>maven项目管理的依赖</h3><pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>dependencies<span class="token operator">></span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+      <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+      <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">-</span>security<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>dependencies<span class="token operator">></span></code></pre>
+<h3 id="建立一个Web层请求接口"><a href="#建立一个Web层请求接口" class="headerlink" title="建立一个Web层请求接口"></a>建立一个Web层请求接口</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/user"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
+  <span class="token annotation punctuation">@GetMapping</span>
+  <span class="token keyword">public</span> String <span class="token function">getUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    
+    <span class="token keyword">return</span> <span class="token string">"Hello Spring Security"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h1 id="Optional类分析"><a href="#Optional类分析" class="headerlink" title="Optional类分析"></a>Optional类分析</h1><pre class=" language-java"><code class="language-java"> <span class="token keyword">public</span><span class="token operator">&lt;</span>U<span class="token operator">></span> Optional<span class="token operator">&lt;</span>U<span class="token operator">></span> <span class="token function">map</span><span class="token punctuation">(</span>Function<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">super</span> T<span class="token punctuation">,</span> <span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">U</span><span class="token operator">></span> mapper<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Objects<span class="token punctuation">.</span><span class="token function">requireNonNull</span><span class="token punctuation">(</span>mapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> Optional<span class="token punctuation">.</span><span class="token function">ofNullable</span><span class="token punctuation">(</span>mapper<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>   
-    <span class="token keyword">public</span><span class="token operator">&lt;</span>U<span class="token operator">></span> Optional<span class="token operator">&lt;</span>U<span class="token operator">></span> <span class="token function">flatMap</span><span class="token punctuation">(</span>Function<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">super</span> T<span class="token punctuation">,</span> Optional<span class="token operator">&lt;</span>U<span class="token operator">>></span> mapper<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Objects<span class="token punctuation">.</span><span class="token function">requireNonNull</span><span class="token punctuation">(</span>mapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> Objects<span class="token punctuation">.</span><span class="token function">requireNonNull</span><span class="token punctuation">(</span>mapper<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span></code></pre>
-<h3 id="flatMap主要应用在Optional修饰类中-就是定义Optional修饰类中的属性"><a href="#flatMap主要应用在Optional修饰类中-就是定义Optional修饰类中的属性" class="headerlink" title="flatMap主要应用在Optional修饰类中,就是定义Optional修饰类中的属性"></a>flatMap主要应用在Optional修饰类中,就是定义Optional修饰类中的属性</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">{</span>
-    <span class="token keyword">private</span> Optional<span class="token operator">&lt;</span>Car<span class="token operator">></span> car<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> Optional<span class="token operator">&lt;</span>Car<span class="token operator">></span> <span class="token function">getCar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> car<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Car</span><span class="token punctuation">{</span>
-    <span class="token keyword">private</span> Optional<span class="token operator">&lt;</span>Insurance<span class="token operator">></span> insurance<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> Optional<span class="token operator">&lt;</span>Insurance<span class="token operator">></span> getInsurance<span class="token punctuation">{</span>
-        <span class="token keyword">return</span> insurance<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Insurance</span><span class="token punctuation">{</span>
-    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-
-获取Car的Insurance
-
-person<span class="token punctuation">.</span><span class="token function">flatMap</span><span class="token punctuation">(</span>u<span class="token operator">-</span><span class="token operator">></span>u<span class="token punctuation">.</span><span class="token function">getCar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">flatMap</span><span class="token punctuation">(</span>r<span class="token operator">-</span><span class="token operator">></span>r<span class="token punctuation">.</span>getInsurance<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>i<span class="token operator">-</span><span class="token operator">></span>i<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><h5 id="1-可以利用map直接作用对象（超过2-3以上的链式判断可以尝试利用，简单，方便）"><a href="#1-可以利用map直接作用对象（超过2-3以上的链式判断可以尝试利用，简单，方便）" class="headerlink" title="1. 可以利用map直接作用对象（超过2-3以上的链式判断可以尝试利用，简单，方便）"></a>1. 可以利用map直接作用对象（超过2-3以上的链式判断可以尝试利用，简单，方便）</h5><h5 id="2-利用flatMap直接作用类中包含Optional的对象（现有代码重新修改，耗时）"><a href="#2-利用flatMap直接作用类中包含Optional的对象（现有代码重新修改，耗时）" class="headerlink" title="2. 利用flatMap直接作用类中包含Optional的对象（现有代码重新修改，耗时）"></a>2. 利用flatMap直接作用类中包含Optional的对象（现有代码重新修改，耗时）</h5>
+<h5 id="直接访问http-localhost-8080-user，如果接口能正常访问，那么应该显示“Hello-Spring-Security”，但是出现如下图所示"><a href="#直接访问http-localhost-8080-user，如果接口能正常访问，那么应该显示“Hello-Spring-Security”，但是出现如下图所示" class="headerlink" title="直接访问http://localhost:8080/user，如果接口能正常访问，那么应该显示“Hello Spring Security”，但是出现如下图所示"></a>直接访问<a href="http://localhost:8080/user" title="网址" target="_blank" rel="noopener">http://localhost:8080/user</a>，如果接口能正常访问，那么应该显示“Hello Spring Security”，但是出现如下图所示<img src="/.io//spring_boot_1.jpg" alt></h5>
             </div>
             <hr/>
 
@@ -553,8 +505,8 @@ person<span class="token punctuation">.</span><span class="token function">flatM
                 </a>
             </div>
             <br/>
-            <a  href="/2019/10/16/Optional/">
-                    《Optional》
+            <a  href="/2019/10/16/spring-security/">
+                    《spring_security》
             </a> 由
             <a href="https://shuying136.github.io">
                 sheyu
@@ -595,9 +547,10 @@ person<span class="token punctuation">.</span><span class="token function">flatM
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/10/16/spring-security/">
                     <div class="card-image">
@@ -619,9 +572,9 @@ person<span class="token punctuation">.</span><span class="token function">flatM
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-10-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-10-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -630,6 +583,7 @@ person<span class="token punctuation">.</span><span class="token function">flatM
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -637,7 +591,7 @@ person<span class="token punctuation">.</span><span class="token function">flatM
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2019/10/16/Optional/">
@@ -670,7 +624,6 @@ isPresent()函数只是判断null，没有判断v
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
