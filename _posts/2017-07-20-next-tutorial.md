@@ -15,7 +15,7 @@ tags:
 ## Screenshots
 
 * Desktop
-![Desktop Preview](./images/2.jpg)
+![Desktop Preview](https://raw.githubusercontent.com/shuying136/shuying136.github.io/master/_posts/images/10.jpg)
 
 * Sidebar
 
