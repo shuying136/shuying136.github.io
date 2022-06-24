@@ -15,7 +15,7 @@ tags:
 ## Screenshots
 
 * Desktop
-![Desktop Preview](2.jpg)
+![Desktop Preview](images/2.jpg)
 
 * Sidebar
 
