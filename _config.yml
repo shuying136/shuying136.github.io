@@ -6,20 +6,9 @@ url: "flexton.netlify.com" # the base hostname & protocol for your site, e.g. ht
 # Author
 author-name:    sheyu
 author-image:   1.jpeg
-author-job:     Web Developer
-author-email:   your-email@domain.com # Add your email for contant form.
-author-twitter: artemsheludko_ # Add your twitter account
-about-author:   I am a web developer focusing on front-end development. Always hungry to keep learning.
+author-job:     后端开发
+author-email:    # Add your email for contant form.
 
-# Social settings
-social-twitter:   
-social-facebook:
-social-github:    
-social-pinterest: 
-social-instagram: 
-social-youtube:
-social-vk:   
-social-linkedin:
 
 # Newsletter
 mailchimp: # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
